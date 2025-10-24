@@ -1,11 +1,257 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
 
-<Layout>
-	<Welcome />
+<Layout title="RyumiiVT - Links" description="RYUMIVT - Links de redes sociales">
+  <main class="main-container">
+    <div class="profile-column">
+      <header class="profile-header">
+        <div class="profile-pic-container">
+          <img src="/RyumiVT.webp" alt="Foto de Perfil de RyumiiVT" class="profile-pic" id="profilePic" />
+          <img src="/sombrero.png" alt="Sombrero" class="sombrero" id="sombrero" />
+        </div>
+        <h1 class="profile-handle">@RyumiVT</h1>
+        <p class="profile-bio">
+          VTuber // Conectando a la Matriz.
+          <br />
+          [ERROR_404: CORDURA NOT FOUND]
+        </p>
+      </header>
+    </div>
+
+    <div class="links-column">
+      <nav class="links-wrapper">
+        <a href="https://kick.com/ryumivt" class="btn-link btn-kick" target="_blank">
+          <i class="fa-solid fa-k"></i>
+          <span class="link-text">KICK</span>
+        </a>
+        <a href="https://www.twitch.tv/ryumivt" class="btn-link btn-twitch" target="_blank">
+          <i class="fab fa-twitch"></i>
+          <span class="link-text">TWITCH</span>
+        </a>
+        <a href="https://www.youtube.com/channel/UCK99i3t0--PW-qX0_H_WzTg" class="btn-link btn-youtube" target="_blank">
+          <i class="fab fa-youtube"></i>
+          <span class="link-text">YOUTUBE</span>
+        </a>
+        <a href="https://www.instagram.com/ryumivt/" class="btn-link btn-instagram" target="_blank">
+          <i class="fab fa-instagram"></i>
+          <span class="link-text">INSTAGRAM</span>
+        </a>
+        <a href="https://www.facebook.com/RyumiiVT?locale=es_LA" class="btn-link btn-facebook" target="_blank">
+          <i class="fab fa-facebook"></i>
+          <span class="link-text">FACEBOOK</span>
+        </a>
+        <a href="https://wa.me/573025983139" class="btn-link btn-whatsapp" target="_blank">
+          <i class="fab fa-whatsapp"></i>
+          <span class="link-text">MERCA</span>
+        </a>
+      </nav>
+    </div>
+  </main>
+
+  <script is:inline>
+    document.addEventListener('DOMContentLoaded', () => {
+      const profilePic = document.getElementById('profilePic');
+      const sombrero = document.getElementById('sombrero');
+      let clickCount = 0;
+
+      if (profilePic && sombrero) {
+        profilePic.addEventListener('click', () => {
+          clickCount++;
+          if (clickCount === 5) {
+            sombrero.classList.add('show');
+          }
+        });
+      }
+    });
+  </script>
 </Layout>
+
+<style>
+:root {
+  --color-whatsapp: #25D366;
+  --color-youtube: #FF0000;
+  --color-kick: #53fc18;
+  --color-facebook: #1877F2;
+  --color-twitch: #9146FF;
+  --color-instagram: #E4405F;
+  --glow-color: rgba(81, 255, 0, 0.8);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.main-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 100%;
+  max-width: 1200px;
+  align-items: center;
+  padding: 2rem;
+  z-index: 1;
+  gap: 2rem;
+}
+
+.profile-column, .links-column {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.profile-header {
+  text-align: center;
+}
+
+.profile-pic-container {
+  position: relative;
+  width: 250px;
+  height: 250px;
+  margin: 0 auto 2rem;
+}
+
+.profile-pic {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 5px solid var(--glow-color);
+  object-fit: cover;
+  box-shadow:
+      0 0 15px var(--glow-color),
+      0 0 30px var(--glow-color),
+      inset 0 0 15px var(--glow-color);
+  cursor: pointer;
+}
+
+.sombrero {
+  position: absolute;
+  top: -115px; 
+  left: 52%;
+  transform: translateX(-50%);
+  width: 300px;
+  height: auto;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.sombrero.show {
+  opacity: 1;
+}
+
+.profile-handle {
+  font-family: 'VT323', monospace;
+  font-size: 3.5rem;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-shadow: 0 0 5px var(--glow-color), 0 0 10px var(--glow-color);
+}
+
+.profile-bio {
+  font-size: 1.1rem;
+  margin-top: 1rem;
+  opacity: 0.9;
+  line-height: 1.6;
+}
+
+.links-wrapper {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  width: 100%;
+  max-width: 400px;
+}
+
+.btn-link {
+  font-family: 'Roboto Mono', monospace;
+  font-weight: 700;
+  font-size: 2rem;
+  text-decoration: none;
+  color: #f0f0f0;
+  background: rgba(10, 20, 40, 0.7);
+  border: 2px solid var(--glow-color);
+  border-radius: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  transition: all 0.3s ease;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  --color-brand-rgb: 81, 255, 0; /* Default to green */
+  --color-brand: var(--glow-color);
+}
+
+.btn-link .link-text { 
+  display: none; 
+}
+
+/* --- Cybernetic Scan Effect --- */
+
+.btn-link::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -150%; 
+  width: 75%;
+  height: 100%;
+  background: linear-gradient(to right, transparent 0%, rgba(var(--color-brand-rgb), 0.7) 50%, transparent 100%);
+  transform: skewX(-25deg);
+  transition: none; 
+  filter: blur(5px);
+}
+
+.btn-link:hover::before {
+  left: 150%;
+  transition: left 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.btn-link:hover {
+  border-color: var(--glow-color); /* Keep border green */
+  box-shadow: 0 0 25px var(--color-brand), 0 0 45px var(--color-brand);
+}
+
+.btn-link:hover i {
+  text-shadow: 0 0 10px #fff;
+  transform: scale(1.1);
+  transition: transform 0.3s ease;
+}
+
+@media (max-width: 900px) {
+  .main-container {
+      grid-template-columns: 1fr;
+      height: auto;
+      padding: 4rem 1rem 2rem;
+      gap: 3rem;
+  }
+  .profile-pic-container {
+      width: 180px;
+      height: 180px;
+  }
+  .sombrero {
+      top: -100px;
+      width: 240px;
+  }
+  .profile-handle {
+      font-size: 2.8rem;
+  }
+  .links-wrapper {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+      max-width: 320px;
+      margin: 0 auto;
+  }
+}
+
+/* --- Brand Color Definitions --- */
+.btn-whatsapp { --color-brand: var(--color-whatsapp); --color-brand-rgb: 37, 211, 102; }
+.btn-youtube { --color-brand: var(--color-youtube); --color-brand-rgb: 255, 0, 0; }
+.btn-kick { --color-brand: var(--color-kick); --color-brand-rgb: 83, 252, 24; }
+.btn-facebook { --color-brand: var(--color-facebook); --color-brand-rgb: 24, 119, 242; }
+.btn-twitch { --color-brand: var(--color-twitch); --color-brand-rgb: 145, 70, 255; }
+.btn-instagram { --color-brand: var(--color-instagram); --color-brand-rgb: 228, 64, 95; }
+
+</style>
